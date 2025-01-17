@@ -7,7 +7,6 @@ use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ImageController extends Controller
 {
@@ -22,7 +21,7 @@ class ImageController extends Controller
         $images = Image::where('user_id', Auth::id())->get();
         return response()->json($images);
     }
-
+    
     //ver imagen
     public function viewImage($id)
     {

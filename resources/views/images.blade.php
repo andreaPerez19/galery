@@ -130,26 +130,28 @@
         const image = document.getElementById('image').files[0];
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
-        formData.append('image', image);
-
-        console.log(image);
-
+        formData.append('image', image);        
+        
         try {
-            const response = await fetch('/api/images', {
+            const response = await fetch('http://'+location.host+'/api/images', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
-                },
-                body: formData,
+                },                
+                body: JSON.stringify({
+                    title: title,
+                    description: description,
+                    image: image
+                })
             });
 
-            const data = await response.json();
+            console.log(response);
+
+            //const data = await response.json();
             if (response.ok) {
                 alert('Imagen subida con éxito');
                 loadImages();  // Cargar las imágenes nuevamente
-            } else {
-                alert('Error: ' + data.message);
-            }
+            } 
         } catch (error) {
             console.error('Error:', error);
         }
@@ -165,6 +167,7 @@
             });
 
             const images = await response.json();
+            console.log(images);
             const imageList = document.getElementById('imageList');
             imageList.innerHTML = '';
             images.forEach(image => {

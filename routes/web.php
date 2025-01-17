@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('users');
+    return view('images');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/users', [App\Http\Controllers\UserController::class, 'getUsers'])->name('getusers');
+Route::get('/images', [App\Http\Controllers\UserController::class, 'getImages'])->name('getimages');

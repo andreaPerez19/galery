@@ -3,12 +3,14 @@
 @section('content_right')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <!-- Alerts -->
-            @include('partials/alerts')
-            <!-- Alerts End -->
-            <div class="card">
-                <div class="card-header">Inicio de sesión</div>
+        <div class="col-md-12">
+            <h3 class="text-white text-center bg-black mb-0"><b>LOGIN</b></h3>
+        </div>
+        <div class="col-md-12">
+            <div class="card" style="border: none; box-shadow: 0 0 10px #fff;">
+                <div class="card-header" style="background: #19565b; color: #fff; text-align: center;">
+                    <img src="/img/logo1.png" alt="logo" style="height:85px;"/>
+                </div>
 
                 <div class="card-body">
                     <form id="loginForm">
@@ -42,7 +44,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="background: #19565b; border:none;">
                                     Iniciar sesión
                                 </button>
                             </div>
@@ -88,7 +90,7 @@
             if (response.ok) {
                 // Si el login es exitoso, almacenar el token JWT en localStorage
                 localStorage.setItem('jwt_token', data.token);                
-                window.location.href = 'http://'+location.host+'/users'; // Redirigir a una página protegida
+                window.location.href = 'http://'+location.host+'/images'; // Redirigir a una página protegida
             } else {
                 // Si hay un error (por ejemplo, credenciales incorrectas)
                 document.getElementById('error-message').innerText = data.message || 'Error al iniciar sesión';

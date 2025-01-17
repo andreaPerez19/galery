@@ -56,6 +56,12 @@ return [
             'throw' => false,
         ],
 
+        'private' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private'),  // Guardamos los archivos en una carpeta privada
+            'visibility' => 'private',  // Archivos privados, no accesibles públicamente
+        ],
+
     ],
 
     /*

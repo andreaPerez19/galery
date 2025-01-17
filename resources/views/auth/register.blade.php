@@ -3,9 +3,14 @@
 @section('content_right')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
+            <h3 class="text-white text-center bg-black mb-0"><b>REGISTRO</b></h3>
+        </div>
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header" style="background: #19565b; color: #fff; text-align: center;">
+                    <img src="/img/logo1.png" alt="logo" style="height:85px;"/>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('registerjwt') }}">
@@ -63,7 +68,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="background: #19565b; border:none;">
                                     Registrar
                                 </button>
                             </div>

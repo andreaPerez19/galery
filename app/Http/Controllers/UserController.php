@@ -16,9 +16,9 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function getUsers()
+    public function getImages()
     {
-        return view('users');
+        return view('images');
     }
 
     /**

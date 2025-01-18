@@ -22,12 +22,12 @@ Route::post('login', [AuthController::class, 'login'])->name('loginjwt');
 
 //protected routes
 Route::middleware('jwt.verify')->group(function(){
-    Route::get('users', [UserController::class, 'index']);
-    Route::get('images', [ImageController::class, 'index']); // Leer
+    Route::get('users', [UserController::class, 'index']); //usuario autenticado
+    Route::get('images', [ImageController::class, 'index']); // Cargar datos de imagenes
     Route::get('images/{id}/view', [ImageController::class, 'viewImage']); // Ver imagen
-    Route::post('images', [ImageController::class, 'store']); // Crear
-    Route::get('images/{id}', [ImageController::class, 'show']);
-    Route::put('images/{id}', [ImageController::class, 'update']); // Actualizar
-    Route::delete('images/{id}', [ImageController::class, 'destroy']); // Eliminar
+    Route::post('images', [ImageController::class, 'store']); // Crear imagen
+    Route::get('images/{id}', [ImageController::class, 'show']); // mostar imagen a editar
+    Route::put('images/{id}', [ImageController::class, 'update']); // Actualizar imagen
+    Route::delete('images/{id}', [ImageController::class, 'destroy']); // Eliminar imagen
 
 });

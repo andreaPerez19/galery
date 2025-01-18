@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('images');
 });
-
-Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::get('/images', [App\Http\Controllers\UserController::class, 'getImages'])->name('getimages');
+//vistas que van a consumir el api
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login'); //login
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register'); //registro
+Route::get('/images', [App\Http\Controllers\UserController::class, 'getImages'])->name('getimages'); //galeria imagenes

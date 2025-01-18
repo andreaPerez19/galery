@@ -30,7 +30,7 @@ async function getUserDetails() {
         }
     } catch (error) {
         // Si hay un error en la solicitud
-        document.getElementById('error-message').innerText = 'Hubo un problema al intentar cargar los datos del usuario. Intenta nuevamente.';
+        console.error('Error:', error);
     }
 }
 

@@ -14,11 +14,12 @@
                 </div>
                 <!-- fin logo -->
                 <div class="card-body">
+                    <h6 class="mb-4"><b>Los campos marcados con (*) son obligatorios</b></h6>
                     <!-- inicio formulario -->
                     <form id="loginForm">
                         <!-- input correo -->
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">Correo electrónico</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">Correo electrónico <span style="color:red;">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -32,7 +33,7 @@
                         </div>
                         <!-- input clave -->
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">Contraseña</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">Contraseña <span style="color:red;">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">

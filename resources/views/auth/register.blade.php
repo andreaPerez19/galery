@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center content-log">
+    <div class="row justify-content-center content-log mb-5">
         <div class="col-md-12">
             <h3 class="text-white text-center bg-black mb-0"><b>REGISTRO</b></h3>
         </div>
@@ -14,12 +14,13 @@
                 </div>
                 <!-- fin logo -->
                 <div class="card-body">
+                    <h6 class="mb-4"><b>Los campos marcados con (*) son obligatorios</b></h6>
                     <!-- inicio formulario -->
                     <form method="POST" action="{{ route('registerjwt') }}">
                         @csrf
                         <!-- input nombre -->
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">Nombre</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">Nombre <span style="color:red;">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -33,7 +34,7 @@
                         </div>
                         <!-- input correo -->
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">Correo electrónico</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">Correo electrónico <span style="color:red;">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -47,7 +48,7 @@
                         </div>
                         <!-- input clave -->
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">Contraseña</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">Contraseña <span style="color:red;">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -61,7 +62,7 @@
                         </div>
                         <!-- input confirmacion clave -->
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Confirmar contraseña</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Confirmar contraseña <span style="color:red;">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">

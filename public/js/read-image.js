@@ -115,7 +115,7 @@ async function getUrlImages(imageId) {
         document.getElementById('editImg').src = objectURL;
     } catch (error) {
         // Si hay un error en la solicitud
-        document.getElementById('error-message').innerText = error;
+        console.error('Error:', error);
     }
 }
 

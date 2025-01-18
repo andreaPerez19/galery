@@ -14,18 +14,19 @@
         <div class="modal-dialog" role="document" style="max-width: 740px;">
             <div class="modal-content">
                 <!--cabecera modal -->
-                <div class="modal-header">
+                <div class="modal-header" style="background: #19565b; color: #fff;">
                     <h5 class="modal-title" id="exampleModalLabel">Registrar imagen</h5>                
                 </div>
                 <!--fin cabecera -->
 
                 <div class="modal-body">
+                    <h6 class="mb-4"><b>Los campos marcados con (*) son obligatorios</b></h6>
                     <!-- Formulario para subir imágenes -->
                     <form id="uploadForm" enctype="multipart/form-data">
                         @csrf
                         <!-- input titulo -->
                         <div class="row mb-3">
-                            <label for="title" class="col-md-4 col-form-label text-md-end">Título</label>
+                            <label for="title" class="col-md-4 col-form-label text-md-end">Título <span style="color:red;">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
@@ -39,7 +40,7 @@
                         </div>
                         <!-- input archivo -->
                         <div class="row mb-3">
-                            <label for="image" class="col-md-4 col-form-label text-md-end">Subir imágen</label>
+                            <label for="image" class="col-md-4 col-form-label text-md-end">Subir imágen <span style="color:red;">*</span></label>
 
                             <div class="col-md-6">            
                                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image" required>
@@ -52,7 +53,7 @@
                         </div>
                         <!-- input descripcion -->
                         <div class="row mb-3">
-                            <label for="description" class="col-md-4 col-form-label text-md-end">Descripción</label>
+                            <label for="description" class="col-md-4 col-form-label text-md-end">Descripción <span style="color:red;">*</span></label>
 
                             <div class="col-md-6">            
                                 <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="3" name="description" value="{{ old('description') }}" required></textarea>
@@ -86,12 +87,13 @@
         <div class="modal-dialog" role="document" style="max-width: 740px;">
             <div class="modal-content">
                 <!--cabecera modal -->
-                <div class="modal-header">
+                <div class="modal-header" style="background: #19565b; color: #fff;">
                     <h5 class="modal-title" id="exampleModalLabel">Editar imagen</h5>                
                 </div>
                 <!--fin cabecera -->
 
                 <div class="modal-body">
+                    <h6 class="mb-4"><b>Los campos marcados con (*) son obligatorios</b></h6>
                     <!-- Formulario para editar imagen -->
                     <form id="editForm">
                         @csrf
@@ -104,12 +106,12 @@
                             <div class="col-md-10">
                                 <div class="row">
                                     <!-- input titulo -->
-                                    <label for="editTitle" class="col-md-4 col-form-label text-md-end">Título</label>
+                                    <label for="editTitle" class="col-md-4 col-form-label text-md-end">Título <span style="color:red;">*</span></label>
                                     <div class="col-md-6">
                                         <input id="editTitle" type="text" class="form-control mb-3" name="title" required>
                                     </div>
                                     <!-- input descripcion -->                      
-                                    <label for="editDescription" class="col-md-4 col-form-label text-md-end">Descripción</label>
+                                    <label for="editDescription" class="col-md-4 col-form-label text-md-end">Descripción <span style="color:red;">*</span></label>
                                     <div class="col-md-6">
                                         <textarea id="editDescription" class="form-control" name="description" required></textarea>
                                     </div>
@@ -133,7 +135,7 @@
         <div class="modal-dialog" role="document" style="max-width: 500px;">
             <div class="modal-content">
                 <!--cabecera modal -->
-                <div class="modal-header">
+                <div class="modal-header" style="background: #19565b; color: #fff;">
                     <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
                 </div>
                 <!--fin cabecera -->

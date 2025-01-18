@@ -1,21 +1,23 @@
 @extends('layouts.app')
 
-@section('content_right')
+@section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center content-log">
         <div class="col-md-12">
             <h3 class="text-white text-center bg-black mb-0"><b>REGISTRO</b></h3>
         </div>
         <div class="col-md-12">
             <div class="card">
+                <!-- logo -->
                 <div class="card-header" style="background: #19565b; color: #fff; text-align: center;">
                     <img src="/img/logo1.png" alt="logo" style="height:85px;"/>
                 </div>
-
+                <!-- fin logo -->
                 <div class="card-body">
+                    <!-- inicio formulario -->
                     <form method="POST" action="{{ route('registerjwt') }}">
                         @csrf
-
+                        <!-- input nombre -->
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">Nombre</label>
 
@@ -29,7 +31,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <!-- input correo -->
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">Correo electrónico</label>
 
@@ -43,7 +45,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <!-- input clave -->
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">Contraseña</label>
 
@@ -57,7 +59,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <!-- input confirmacion clave -->
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Confirmar contraseña</label>
 
@@ -65,7 +67,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
+                        <!-- boton de envio -->
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary" style="background: #19565b; border:none;">
@@ -74,6 +76,7 @@
                             </div>
                         </div>
                     </form>
+                    <!-- fin formulario -->
                 </div>
             </div>
         </div>

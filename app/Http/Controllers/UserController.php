@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -12,7 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        //obtener usuario autenticado
+        $user_id = Auth::id();
+        $user = User::find($user_id);
         return response()->json($user);
     }
 

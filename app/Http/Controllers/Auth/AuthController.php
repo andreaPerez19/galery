@@ -26,15 +26,8 @@ class AuthController extends Controller
         ]);
 
         $token = JWTAuth::fromUser($user);
-        //guardar token en la base
-        $user->update(['remember_token' => $token]);
         
         return redirect()->route('login')->with('alert', 'Usuario registrado con éxito!');
-
-        /*return response()->json([
-            'user' => $user,
-            'token' => $token
-        ], 201);*/
     }
 
     public function login(LoginRequest $request){

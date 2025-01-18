@@ -165,8 +165,8 @@
             if (response.ok) {
                 // Mostrar los detalles del usuario
                 document.getElementById('user-info').innerHTML = `
-                    <div>${data[0].name}</div>
-                    <div>${data[0].email}</div>
+                    <div>${data.name}</div>
+                    <div>${data.email}</div>
                 `;
             } else {
                 // Si la respuesta no es ok, mostrar el mensaje de error

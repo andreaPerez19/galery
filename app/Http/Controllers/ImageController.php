@@ -16,9 +16,20 @@ class ImageController extends Controller
     }
 
     // Leer todas las imágenes de un usuario
-    public function index()
+    public function index(Request $request)
     {
-        $images = Image::where('user_id', Auth::id())->get();
+        $query = Image::query();
+
+        // Buscar por título o descripción si se pasa un parámetro 'search'
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('user_id', Auth::id())
+                ->where('title', 'LIKE', "%{$search}%");
+        }
+
+        // Paginación: Obtener imágenes con un límite por página
+        $images = $query->where('user_id', Auth::id())->paginate(8);  // Aquí definimos que queremos 8 imágenes por página
+        
         return response()->json($images);
     }
     
@@ -33,12 +44,25 @@ class ImageController extends Controller
         }
 
         // Proveer el archivo de la imagen desde la ubicación privada
-        if (Storage::exists($image->path)) {
-            return response()->download(Storage::path($image->path));
+        if (Storage::exists($image->image_path)) {
+            return response()->download(Storage::path($image->image_path));
         }
 
         return response()->json(['message' => 'Imagen no encontrada'], 404);
     }
+
+    //cargar datos de la imagen
+    public function show($id)
+    {
+        $image = Image::find($id);  // Asumiendo que usas Eloquent y tienes un modelo llamado Image
+
+        if (!$image) {
+            return response()->json(['message' => 'Imagen no encontrada'], 404);
+        }
+
+        return response()->json($image);
+    }
+
 
     // Crear una imagen
     public function store(Request $request)
@@ -69,11 +93,6 @@ class ImageController extends Controller
     // Actualizar una imagen
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required|max:200',
-            'description' => 'required',
-        ]);
-
         $image = Image::findOrFail($id);        
 
         // Actualizar la base de datos con la nueva información
@@ -91,8 +110,8 @@ class ImageController extends Controller
         $image = Image::findOrFail($id);
 
         // Eliminar el archivo de la imagen en el servidor
-        if (Storage::exists($image->path)) {
-            Storage::delete($image->path);
+        if (Storage::exists($image->image_path)) {
+            Storage::delete($image->image_path);
         }
 
         $image->delete();

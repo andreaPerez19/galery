@@ -27,6 +27,7 @@ Route::middleware('jwt.verify')->group(function(){
     Route::get('images', [ImageController::class, 'index']); // Leer
     Route::get('images/{id}/view', [ImageController::class, 'viewImage']); // Ver imagen
     Route::post('images', [ImageController::class, 'store']); // Crear
+    Route::get('images/{id}', [ImageController::class, 'show']);
     Route::put('images/{id}', [ImageController::class, 'update']); // Actualizar
     Route::delete('images/{id}', [ImageController::class, 'destroy']); // Eliminar
 

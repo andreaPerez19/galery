@@ -14,7 +14,7 @@ class User extends Authenticatable implements JWTSubject
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * datos que pueden modificarse
      *
      * @var array<int, string>
      */
@@ -26,7 +26,7 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Los atributos que deben ocultarse para la serialización.
      *
      * @var array<int, string>
      */
@@ -35,7 +35,7 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     /**
-     * The attributes that should be cast.
+     * Los atributos que se deben emitir.
      *
      * @var array<string, string>
      */
@@ -44,6 +44,9 @@ class User extends Authenticatable implements JWTSubject
         'password' => 'hashed',
     ];
 
+    /**
+     * Funcion para identificar token jwt
+     */
     public function getJWTIdentifier(){
         return $this->getKey();
     }

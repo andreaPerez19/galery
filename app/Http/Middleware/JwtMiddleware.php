@@ -13,7 +13,7 @@ use Exception;
 class JwtMiddleware
 {
     /**
-     * Handle an incoming request.
+     * Autenticacion JWT
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */

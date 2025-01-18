@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+//librerias
 use Illuminate\Http\Request;
-use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+//modelos
+use App\Models\Image;
 
 class ImageController extends Controller
 {
@@ -18,6 +19,7 @@ class ImageController extends Controller
     // Leer todas las imágenes de un usuario
     public function index(Request $request)
     {
+        //obtener las imagenes
         $query = Image::query();
 
         // Buscar por título o descripción si se pasa un parámetro 'search'
@@ -29,13 +31,14 @@ class ImageController extends Controller
 
         // Paginación: Obtener imágenes con un límite por página
         $images = $query->where('user_id', Auth::id())->paginate(8);  // Aquí definimos que queremos 8 imágenes por página
-        
+        // enviar imagenes paginadas
         return response()->json($images);
     }
     
-    //ver imagen
+    //mostrar imagen
     public function viewImage($id)
     {
+        //obtener la imagen
         $image = Image::findOrFail($id);
 
         // Verificar que el usuario autenticado sea el propietario de la imagen
@@ -48,18 +51,20 @@ class ImageController extends Controller
             return response()->download(Storage::path($image->image_path));
         }
 
+        // respuesta de error
         return response()->json(['message' => 'Imagen no encontrada'], 404);
     }
 
-    //cargar datos de la imagen
+    //cargar datos de la imagen a editar
     public function show($id)
     {
-        $image = Image::find($id);  // Asumiendo que usas Eloquent y tienes un modelo llamado Image
-
+        //obtener la imagen
+        $image = Image::find($id);
+        //validar que exista la imagen
         if (!$image) {
             return response()->json(['message' => 'Imagen no encontrada'], 404);
         }
-
+        //enviar datos de imagen
         return response()->json($image);
     }
 
@@ -67,12 +72,14 @@ class ImageController extends Controller
     // Crear una imagen
     public function store(Request $request)
     {
+        //validar campos
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
             'title' => 'required|max:200',
             'description' => 'required',
         ]);
 
+        //obtener imagen del formulario
         $image = $request->file('image');
         $imageName = Str::random(10) . '.' . $image->getClientOriginalExtension();
         
@@ -87,12 +94,14 @@ class ImageController extends Controller
             'user_id' => Auth::id(),
         ]);
 
+        //enviar respuesta
         return response()->json($imageRecord, 201);
     }
 
     // Actualizar una imagen
     public function update(Request $request, $id)
     {
+        //obtener datos de la imagen
         $image = Image::findOrFail($id);        
 
         // Actualizar la base de datos con la nueva información
@@ -101,12 +110,14 @@ class ImageController extends Controller
             'description' => $request->description,
         ]);
 
+        //enviar respuesta
         return response()->json($image, 200);
     }
 
     // Eliminar una imagen
     public function destroy($id)
     {
+        //obtener datos de la imagen
         $image = Image::findOrFail($id);
 
         // Eliminar el archivo de la imagen en el servidor
@@ -114,8 +125,10 @@ class ImageController extends Controller
             Storage::delete($image->image_path);
         }
 
+        //eliminar registro de imagen
         $image->delete();
 
+        //enviar mensaje de respuesta
         return response()->json(['message' => 'Imagen eliminada con éxito'], 200);
     }
 }

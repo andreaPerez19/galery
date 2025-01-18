@@ -43,7 +43,7 @@
                             <label for="image" class="col-md-4 col-form-label text-md-end">Subir imágen <span style="color:red;">*</span></label>
 
                             <div class="col-md-6">            
-                                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image" required>
+                                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image" required accept=".jpeg,.png,.gif">
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
